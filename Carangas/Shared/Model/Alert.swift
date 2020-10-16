@@ -1,5 +1,12 @@
-import UIKit
+//
+//  Alert.swift
+//  Carangas
+//
+//  Created by Eric Alves Brito on 15/10/20.
+//  Copyright © 2020 Eric Brito. All rights reserved.
+//
 
+import UIKit
 
 class Alert {
     static func show(title: String?, message: String?, presenter: UIViewController) {

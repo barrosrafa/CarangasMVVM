@@ -1,3 +1,10 @@
+//
+//  CarsTableViewController.swift
+//  Carangas
+//
+//  Copyright © 2020 Eric Brito. All rights reserved.
+//
+
 import UIKit
 
 class CarsTableViewController: UITableViewController {
@@ -18,8 +25,14 @@ class CarsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CarViewController, let indexPath = tableView.indexPathForSelectedRow {
-            vc.viewModel = viewModel.getCarVisualizationViewModelFor(indexPath)
+        switch segue.destination {
+        case let carViewController as CarViewController:
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            carViewController.viewModel = viewModel.getCarVisualizationViewModelFor(indexPath)
+        case let carFormViewController as CarFormViewController:
+            carFormViewController.viewModel = CarFormViewModel()
+        default:
+            break
         }
     }
     
